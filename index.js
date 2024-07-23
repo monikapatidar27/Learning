@@ -1,4 +1,3 @@
-
 // const { spawn } = require("child_process");
 // const child = spawn("dir", ["D:\\empty"], { shell: true });
 
@@ -22,13 +21,12 @@
 // let child = cp.fork(__dirname+'/sub.js');
 // child.on('message',((m)=>{
 //     console.log("parent process recieved",m);
-// })) 
+// }))
 // child.send({ hello: 'from parent process' });
- 
+
 // child.on('close', (code) => {
 //     console.log(`child process exited with code ${code}`);
 // });
-
 
 // console.log("number1");
 // setImmediate(()=>{
@@ -52,11 +50,57 @@
 // inStream.push(null);
 // inStream.pipe(process.stdout);
 
-const { Writable } = require('stream'); 
-const outStream = new Writable({
-    write(chunk,encoding,callback){
-        console.log(chunk.toString());
-        callback();
-    }
-})
-process.stdin.pipe(outStream)
+// const { Writable } = require('stream');
+// const outStream = new Writable({
+//     write(chunk,encoding,callback){
+//         console.log(chunk.toString());
+//         callback();
+//     }
+// })
+// process.stdin.pipe(outStream)
+
+// console.time('fetchData');
+
+// const fetchData = async () => {
+//     return new Promise((resolve) => {
+//         setTimeout(() => {
+//             resolve('Data fetched');
+//         }, 2000);
+//     });
+// };
+
+// fetchData().then(result => {
+//     console.timeEnd('fetchData');
+//     console.log(result)
+// });
+
+// const add = async (a, b) => {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       resolve(a + b);
+//     }, 2000);
+//   });
+// };
+// (async () => {
+//     const startTime = Date.now();
+//     const res = await add(2,3);
+//     const endTime = Date.now();
+//     const timeTaken = endTime - startTime;
+//     console.log(`result ${res}`);
+//     console.log(`time taken to provide the result ${timeTaken} ms.`)
+// })();
+
+
+const express = require("express");
+const app = express();
+ 
+const port = 3000;
+app.get("/", (req, res) => {
+    res.send(`<div>
+    <h2>welcomw to the page</h2>
+    
+  </div>`);
+});
+app.listen(port, () => {
+    console.log(`Listening to port ${port}`);
+});
